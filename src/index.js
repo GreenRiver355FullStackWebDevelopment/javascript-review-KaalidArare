@@ -63,6 +63,14 @@ function renderReview(review) {
 
 // iterating over each review and in the reviews array
 reviews.forEach(renderReview);
+updateStar();
+
+// calculates the average rating score 
+function updateStar() {
+  const avg = calculateStarAverage(reviews);
+  // appends the average score to the starRating paragraph
+  starRatingP.textContent = `Star Rating: ${avg}`;
+}
 
 const form = document.querySelector("form");
 
@@ -87,6 +95,6 @@ form.addEventListener("submit", (event) => {
   console.log(reviews);
   // render the new reviews array
   renderReview(newReview);
-
+  updateStar();
 });
 
