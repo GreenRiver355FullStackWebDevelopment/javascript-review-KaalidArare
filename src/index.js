@@ -63,3 +63,30 @@ function renderReview(review) {
 
 // iterating over each review and in the reviews array
 reviews.forEach(renderReview);
+
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  // we get the informaton entered by the user
+  const username = document.querySelector("#username").value;
+  const image = document.querySelector("#image").value;
+  const star = parseInt(document.querySelector("#star").value, 10);
+  const reviewText = document.querySelector("#review").value;
+
+  // create an array from the information we got
+  const newReview = {
+    username,
+    image,
+    star,
+    review: reviewText
+  };
+  // add the new array to the reviews array
+  reviews.push(newReview);
+  console.log(reviews);
+  // render the new reviews array
+  renderReview(newReview);
+
+});
+
